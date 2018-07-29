@@ -25,7 +25,7 @@ export default class App extends React.Component {
           initialRouteName: 'review'
         })
     }, {
-      initialRouteName: 'main'
+      initialRouteName: 'welcome'
     });
     console.log('kuch hua');
     return (
