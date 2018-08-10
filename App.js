@@ -19,21 +19,22 @@ export default class App extends React.Component {
       main: createBottomTabNavigator({
           map: { screen: MapScreen },
           deck: { screen: DeckScreen },
-          review: createStackNavigator({
+          review: { screen: createStackNavigator({
               review: { screen: ReviewScreen },
               settings: { screen: SettingScreen }
             })
-        }, {
-          initialRouteName: 'review'
+          }
+        // }, {
+        //   initialRouteName: 'map' // DEBUG:
         })
     }, {
-      initialRouteName: 'auth',
+      // initialRouteName: 'main', // DEBUG:
       navigationOptions: {
         tabBarVisible: false
       },
       lazyLoad: true //not preload Components in navi
     });
-    console.log('kuch hua');
+    console.log('App.js');
     return (
       <Provider store={store}>
         <MainNavigator />
@@ -41,12 +42,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

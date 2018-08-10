@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "jobs-native",
-    "description": "This project is really great.",
+    "name": "Mployed",
+    "description": "Provides Job to People",
     "slug": "jobs-native",
     "privacy": "unlisted",
     "sdkVersion": "29.0.0",

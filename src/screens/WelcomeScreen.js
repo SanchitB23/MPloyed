@@ -8,7 +8,6 @@ const SLIDE_DATA = [
   { text: 'Welcome to Job App', color: '#03A9F4' },
   { text: 'Set your location and swipe away', color: '#009688' },
   { text: 'Use this to get a Job', color: '#03A9F4' }
-
 ];
 
 class WelcomeScreen extends Component {
@@ -16,7 +15,7 @@ class WelcomeScreen extends Component {
   async componentWillMount() {
     const token = await AsyncStorage.getItem('fb_token');
     if (token) {
-      this.props.navigation.navigate('map');
+      this.props.navigation.navigate('main');
       this.setState({ token });
     } else {
       this.setState({ token: false });
@@ -31,7 +30,7 @@ class WelcomeScreen extends Component {
     }
     console.log('welcome');
     return (
-     <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete} />
+     <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete.bind(this)} />
    );
   }
 }
