@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "eslint-config-rallycoding": "^3.2.0",
     "expo": "^29.0.0",
     "latlng-to-zip": "0.0.1",
     "lodash": "^4.17.10",
@@ -21,6 +20,7 @@
     "react-navigation": "^2.9.3",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-persist": "^4.6.0",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
