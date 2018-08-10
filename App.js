@@ -2,6 +2,7 @@ import React from 'react';
 // import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { Icon } from 'react-native-elements';
 
 import store from './src/store';
 import AuthScreen from './src/screens/AuthScreen';
@@ -19,16 +20,27 @@ export default class App extends React.Component {
       main: createBottomTabNavigator({
           map: { screen: MapScreen },
           deck: { screen: DeckScreen },
-          review: { screen: createStackNavigator({
-              review: { screen: ReviewScreen },
-              settings: { screen: SettingScreen }
-            })
-          }
-        // }, {
-        //   initialRouteName: 'map' // DEBUG:
-        })
+          review: {
+            screen: createStackNavigator({
+                review: {
+                  screen: ReviewScreen,
+                },
+                settings: { screen: SettingScreen }
+              }),
+              navigationOptions: {
+                tabBarLabel: 'Review Jobs',
+                tabBarIcon: ({ tintColor }) => (
+                  <Icon name="favorite" size={30} color={tintColor} />
+                ),
+              }
+            }
+      }, {
+        // tabBarPosition: 'bottom', not needed now
+        tabBarOptions: {
+          labelStyle: { fontSize: 12 }
+        }
+      })
     }, {
-      // initialRouteName: 'main', // DEBUG:
       navigationOptions: {
         tabBarVisible: false
       },

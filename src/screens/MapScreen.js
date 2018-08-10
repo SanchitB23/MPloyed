@@ -8,8 +8,8 @@ import * as actions from '../actions';
 class MapScreen extends Component {
   static navigationOptions={
     title: 'Map',
-    tabBarIcon: () => (
-      <Icon name="my-location" size={30} />
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="my-location" size={30} color={tintColor} />
     )
   }
   state={

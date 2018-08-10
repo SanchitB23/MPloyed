@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { MapView } from 'expo';
-import { Card } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
 import * as actions from '../actions';
 import Swipe from '../components/Swipe';
 
 let latitude = '';
 let longitude = '';
 class DeckScreen extends Component {
+  static navigationOptions={
+    title: 'Jobs',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="description" size={30} color={tintColor} />
+    )
+  }
   renderCard(job) {
     // console.log('eck', latitude, longitude);
     const initialRegion = {
@@ -53,13 +59,18 @@ class DeckScreen extends Component {
         // </Text> */}
         );
   }
-  renderNoMoreCards() {
-    return (
+  renderNoMoreCards=() => (
       <Card
         title="No More Jobs"
-      />
-    );
-  }
+      >
+        <Button
+          title='Back to Map'
+          large
+          icon={{ name: 'my-location' }}
+          onPress={() => this.props.navigation.navigate('map')}
+        />
+      </Card>
+    )
   render() {
     latitude = this.props.navigation.getParam('lat', 28.632744);
     longitude = this.props.navigation.getParam('long', 77.219597);

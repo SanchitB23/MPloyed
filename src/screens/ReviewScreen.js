@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Linking, ScrollView, Platform } from 'react-native';
-import { Button, Icon, Card } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { MapView } from 'expo';
 import * as actions from '../actions';
@@ -10,9 +10,6 @@ class ReviewScreen extends Component {
     // tabBarLabel: 'Review',
     // BUG: Not able to set tab related stuff coz of stacknavigator
     headerTitle: 'Review Jobs',
-    tabBarIcon: () => (
-      <Icon name="favorite" size={30} />
-    ),
     headerRight: (
       <Button
         title='Settings'
