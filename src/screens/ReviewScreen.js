@@ -1,35 +1,87 @@
 import React, { Component } from 'react';
-import { View, Text, Platform } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, Text, Linking, ScrollView, Platform } from 'react-native';
+import { Button, Icon, Card } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { MapView } from 'expo';
+import * as actions from '../actions';
 
 class ReviewScreen extends Component {
   static navigationOptions =({ navigation }) => ({
-      title: 'Review Jobs',
-      headerRight: (
-        <Button
-          title='Settings'
-          onPress={() => navigation.navigate('settings')}
-          color="rgba(0,122,255,1)"
-          backgroundColor="rgba(0,0,0,0)"
-        />
-      ),
-      headerStyle: {
-        // marginTop: Platform.OS === 'android' ? 24 : 0
-      }
+    // tabBarLabel: 'Review',
+    // BUG: Not able to set tab related stuff coz of stacknavigator
+    headerTitle: 'Review Jobs',
+    tabBarIcon: () => (
+      <Icon name="favorite" size={30} />
+    ),
+    headerRight: (
+      <Button
+        title='Settings'
+        tabBarLabel='Settings'
+        onPress={() => navigation.navigate('settings')}
+        color="rgba(0,122,255,1)"
+        backgroundColor="rgba(0,0,0,0)"
+      />
+    ),
+      // headerStyle: {
+      //   // marginTop: Platform.OS === 'android' ? 24 : 0
+      // }
     })
+  renderLikedJobs() {
+    return this.props.likedJob.map((job, i) => {
+      console.log(job);
+      const initialRegion = {
+        longitude: -122,
+        latitude: 37,
+        latitudeDelta: 0.045,
+        longitudeDelta: 0.02
+      };
+      return (
+        <Card key={i} title='Title'>
+          <View style={{ height: 200 }}>
+            <MapView
+              style={{ flex: 1 }}
+              cacheEnabled={Platform.OS === 'android'}
+              scrollEnabled={false}
+              initialRegion={initialRegion}
+            />
+            <View style={styles.detailWrapper}>
+              <Text style={styles.italics}>Company</Text>
+              <Text style={styles.italics}>Date</Text>
+            </View>
+            <Button
+              title='Appply Now'
+              backgroundColor='#03A9F4'
+              onPress={() => Linking.openURL(job.url)}
+            />
+          </View>
+        </Card>
+      );
+      }
+    );
+  }
   render() {
+    console.log('ReviewScreen');
+    console.log('Data', this.props.likedJob);
     return (
-      <View>
-        <Text>ReviewScreen</Text>
-        <Text>ReviewScreen</Text>
-        <Text>ReviewScreen</Text>
-        <Text>ReviewScreen</Text>
-        <Text>ReviewScreen</Text>
-        <Text>ReviewScreen</Text>
-        <Text>ReviewScreen</Text>
-      </View>
+      <ScrollView>
+        {this.renderLikedJobs()}
+      </ScrollView>
     );
   }
 }
 
-export default ReviewScreen;
+function mapStateToProps({ likedJob }) {
+  return { likedJob };
+}
+export default connect(mapStateToProps, actions)(ReviewScreen);
+
+const styles = {
+  detailWrapper: {
+    marginVertical: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  italics: {
+    fontStyle: 'italic'
+  }
+};
