@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, Linking, ScrollView, Platform } from 'react-native';
+import { View, Text, Linking, Image, ScrollView } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { MapView } from 'expo';
 import * as actions from '../actions';
 
 class ReviewScreen extends Component {
   static navigationOptions =({ navigation }) => ({
-    // tabBarLabel: 'Review',
-    // BUG: Not able to set tab related stuff coz of stacknavigator
     headerTitle: 'Review Jobs',
     headerRight: (
       <Button
@@ -19,46 +16,31 @@ class ReviewScreen extends Component {
         backgroundColor="rgba(0,0,0,0)"
       />
     ),
-      // headerStyle: {
-      //   // marginTop: Platform.OS === 'android' ? 24 : 0
-      // }
     })
   renderLikedJobs() {
-    return this.props.likedJob.map((job, i) => {
-      console.log(job);
-      const initialRegion = {
-        longitude: -122,
-        latitude: 37,
-        latitudeDelta: 0.045,
-        longitudeDelta: 0.02
-      };
-      return (
-        <Card key={i} title='Title'>
+    return this.props.likedJob.map((job, i) => (
+        <Card key={i} title={job.title}>
           <View style={{ height: 200 }}>
-            <MapView
-              style={{ flex: 1 }}
-              cacheEnabled={Platform.OS === 'android'}
-              scrollEnabled={false}
-              initialRegion={initialRegion}
+            <Image
+              source={{ uri: job.company_logo }}
+              resizeMode='center'
+              style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: 50 }}
             />
             <View style={styles.detailWrapper}>
-              <Text style={styles.italics}>Company</Text>
-              <Text style={styles.italics}>Date</Text>
+              <Text style={styles.italics}>{job.company}</Text>
+              <Text style={styles.italics}>{job.created_at}</Text>
             </View>
             <Button
-              title='Appply Now'
+              title='Apply Now'
               backgroundColor='#03A9F4'
               onPress={() => Linking.openURL(job.url)}
             />
           </View>
         </Card>
-      );
-      }
+      )
     );
   }
   render() {
-    console.log('ReviewScreen');
-    console.log('Data', this.props.likedJob);
     return (
       <ScrollView>
         {this.renderLikedJobs()}

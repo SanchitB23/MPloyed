@@ -57,7 +57,6 @@ const styles = {
   },
   buttonStyle: {
     backgroundColor: '#0288D1',
-    // paddingTop: 15
   }
 };
 

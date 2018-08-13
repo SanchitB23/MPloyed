@@ -16,14 +16,12 @@ class DeckScreen extends Component {
     )
   }
   renderCard(job) {
-    // console.log('eck', latitude, longitude);
     const initialRegion = {
       longitude,
       latitude,
       latitudeDelta: 0.045,
       longitudeDelta: 0.02
     };
-    // console.log('card', job);
     return (
       <Card
         title={job.title}
@@ -40,24 +38,9 @@ class DeckScreen extends Component {
           <Text>{job.company}</Text>
           <Text>{job.created_at}</Text>
         </View>
-        <Text>Job Detail</Text>
+        <Text>{job.description}</Text>
       </Card>
-        // {/* <View style={{ height: 300 }}>
-        //   <MapView
-        //     scrollEnabled={false}
-        //     style={{ flex: 1 }}
-        //     cacheEnabled={Platform.OS === 'android'}
-        //     initialRegion={initialRegion}
-        //   />
-        //   </View>
-        //   <View style={styles.detailWrapper}>
-        //   <Text>{job.company}</Text>
-        //   <Text>{job.formattedRelativeTime}</Text>
-        //   </View>
-        //   <Text>
-        //   {job.snippet.replace(/<b>/g, '').replace(/<\/b/g, '')}
-        // </Text> */}
-        );
+    );
   }
   renderNoMoreCards=() => (
       <Card
@@ -75,9 +58,6 @@ class DeckScreen extends Component {
     latitude = this.props.navigation.getParam('lat', 28.632744);
     longitude = this.props.navigation.getParam('long', 77.219597);
     console.log('DeckScreen');
-    // console.log('deck props', this.props.jobs);
-    // BUG: Different Height depending on job description
-    // FIXME: How to ^: Either set height of card or text height
     return (
       <View style={{ marginTop: 10 }}>
         <Swipe
@@ -100,6 +80,6 @@ const styles = {
   detailWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 10
+    marginVertical: 10
   }
 };

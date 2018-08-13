@@ -15,27 +15,33 @@ class MapScreen extends Component {
   state={
     mapLoaded: false,
     region: {
-      longitude: -122,
-      latitude: 37,
+      longitude: 77.216721,
+      latitude: 28.644800,
       longitudeDelta: 0.04,
       latitudeDelta: 0.09
-    }
+    },
+    loading: false
   }
+
   componentDidMount() {
     this.setState({ mapLoaded: true });
   }
   onRegionChangeComplete=(region) => {
     this.setState({ region });
   }
-  onButtonPress=() => {
-    console.log('seaarched');
-    // console.log(this.state.region);
-    this.props.fetchJobs(this.state.region, () => {
-      this.props.navigation.navigate('deck', {
-        lat: this.state.region.latitude,
-        long: this.state.region.longitude
+  onButtonPress=async() => {
+    try {
+    this.setState({ loading: true });
+      await this.props.fetchJobs(this.state.region, () => {
+        this.props.navigation.navigate('deck', {
+          lat: this.state.region.latitude,
+          long: this.state.region.longitude
+        });
       });
-    });
+      this.setState({ loading: false });
+    } catch (e) {
+      console.log(e);
+    }
   }
   render() {
     if (!this.state.mapLoaded) {
@@ -47,7 +53,6 @@ class MapScreen extends Component {
         </View>
       );
     }
-    console.log('map');
     return (
       <View style={{ flex: 1 }}>
         <MapView
@@ -60,6 +65,7 @@ class MapScreen extends Component {
             large
             backgroundColor='#009688'
             title="Search This Area"
+            loading={this.state.loading}
             icon={{ name: 'search' }}
             onPress={this.onButtonPress} //// NOTE: no need to bind if using arrow func
           />

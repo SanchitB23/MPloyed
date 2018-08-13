@@ -1,5 +1,4 @@
 import React from 'react';
-// import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { Icon } from 'react-native-elements';
@@ -35,7 +34,6 @@ export default class App extends React.Component {
               }
             }
       }, {
-        // tabBarPosition: 'bottom', not needed now
         tabBarOptions: {
           labelStyle: { fontSize: 12 }
         }
@@ -46,7 +44,6 @@ export default class App extends React.Component {
       },
       lazyLoad: true //not preload Components in navi
     });
-    console.log('App.js');
     return (
       <Provider store={store}>
         <MainNavigator />

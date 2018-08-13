@@ -1,18 +1,18 @@
 {
   "expo": {
-    "name": "Mployed",
-    "description": "Provides Job to People",
-    "slug": "jobs-native",
+    "name": "MPloyed",
+    "description": "Provides Job to People Location Wise",
+    "slug": "mployed-app",
     "privacy": "unlisted",
     "sdkVersion": "29.0.0",
     "platforms": ["ios", "android"],
-    "version": "1.0.0",
+    "version": "1.1.4",
     "orientation": "portrait",
     "icon": "./assets/ic_mployed.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/jobSplash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#fff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,7 +21,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mrawesome.mployed"
+    },
+    "android": {
+      "package": "com.mrawesome.mployed",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCAVe1LuyNODmnWZgLKu9an4F6fXnLaiBQ"
+        }
+      }
     }
   }
 }

@@ -14,6 +14,8 @@ const store = createStore(
   )
 );
 
-// persistStore(store, { storage: AsyncStorage, whitelist: ['likedJob'] }).purge(); // REVIEW: for production
+// persistStore(store, { storage: AsyncStorage, whitelist: ['likedJob'] }).purge();
+// REVIEW: for production
+
 persistStore(store, { storage: AsyncStorage, whitelist: ['likedJob'] });
 export default store;

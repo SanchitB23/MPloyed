@@ -5,7 +5,7 @@ import { AsyncStorage } from 'react-native';
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { text: 'Welcome to Job App', color: '#03A9F4' },
+  { text: 'Welcome to MPloyed App', color: '#03A9F4' },
   { text: 'Set your location and swipe away', color: '#009688' },
   { text: 'Use this to get a Job', color: '#03A9F4' }
 ];
@@ -28,7 +28,6 @@ class WelcomeScreen extends Component {
     if (_.isNull(this.state.token)) {
       return <AppLoading />;
     }
-    console.log('welcome');
     return (
      <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete.bind(this)} />
    );

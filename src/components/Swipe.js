@@ -6,7 +6,6 @@ import {
   Dimensions,
   LayoutAnimation,
   UIManager,
-  Platform
 } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -15,8 +14,8 @@ const SWIPE_OUT_DURATION = 250;
 
 class Swipe extends Component {
   static defaultProps = {
-    onSwipeRight: () => {},
-    onSwipeLeft: () => {}
+    onSwipeRight: () => { console.log('right'); },
+    onSwipeLeft: () => { console.log('left'); }
   }
 
   constructor(props) {
