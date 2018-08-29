@@ -51,3 +51,9 @@ export default class App extends React.Component {
     );
   }
 }
+// BUG: Random Crashes
+// BUG: Crashes on second API fetching
+/*
+ FIXME: API fetching crash can be fixed by not making app state,
+  and using seperate API and passing job id and location in navigate as params
+*/
