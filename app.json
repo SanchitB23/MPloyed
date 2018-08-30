@@ -6,7 +6,11 @@
     "privacy": "unlisted",
     "sdkVersion": "29.0.0",
     "platforms": ["ios", "android"],
+<<<<<<< HEAD
     "version": "1.2.5",
+=======
+    "version": "1.2.0",
+>>>>>>> f3d79c3f72f48594cbc86eedf90621bd5b4418a0
     "orientation": "portrait",
     "icon": "./assets/ic_mployed.png",
     "githubUrl":"https://github.com/SanchitB23/MPloyed",
