@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View, AsyncStorage, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Card } from 'react-native-elements';
 import { clearLikedJobs } from '../actions';
+
+const FEEDBACK_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdiUw6GIIU_RDz0vWM2bxe6dYomSeKDJmuTZAtpkiE_iaOwgg/viewform?usp=sf_link';
 
 class SettingScreen extends Component {
   render() {
@@ -30,6 +32,16 @@ class SettingScreen extends Component {
               this.props.clearLikedJobs();
               this.props.navigation.navigate('welcome');
             }}
+          />
+        </Card>
+        <Card>
+
+          <Button
+            title='Feedback'
+            large
+            icon={{ name: 'feedback' }}
+            backgroundColor='#F9A825'
+            onPress={() => Linking.openURL(FEEDBACK_URL)}
           />
         </Card>
       </View>
