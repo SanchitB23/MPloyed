@@ -5,11 +5,14 @@
     "slug": "mployed-app",
     "privacy": "unlisted",
     "sdkVersion": "29.0.0",
-    "platforms": ["ios", "android"],
-    "version": "1.2.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.3.0",
     "orientation": "portrait",
     "icon": "./assets/ic_mployed.png",
-    "githubUrl":"https://github.com/SanchitB23/MPloyed",
+    "githubUrl": "https://github.com/SanchitB23/MPloyed",
     "splash": {
       "image": "./assets/jobSplash.png",
       "resizeMode": "cover",
@@ -27,7 +30,7 @@
     },
     "android": {
       "package": "com.mrawesome.mployed",
-      "versionCode":2,
+      "versionCode": 2,
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyCAVe1LuyNODmnWZgLKu9an4F6fXnLaiBQ"
