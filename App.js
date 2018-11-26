@@ -17,33 +17,33 @@ export default class App extends React.Component {
       welcome: { screen: WelcomeScreen },
       auth: { screen: AuthScreen },
       main: createBottomTabNavigator({
-          map: { screen: MapScreen },
-          deck: { screen: DeckScreen },
-          review: {
-            screen: createStackNavigator({
-                review: {
-                  screen: ReviewScreen,
-                },
-                settings: { screen: SettingScreen }
-              }),
-              navigationOptions: {
-                tabBarLabel: 'Review Jobs',
-                tabBarIcon: ({ tintColor }) => (
-                  <Icon name="favorite" size={30} color={tintColor} />
-                ),
-              }
-            }
-      }, {
-        tabBarOptions: {
-          labelStyle: { fontSize: 12 }
+        map: { screen: MapScreen },
+        deck: { screen: DeckScreen },
+        review: {
+          screen: createStackNavigator({
+            review: {
+              screen: ReviewScreen,
+            },
+            settings: { screen: SettingScreen }
+          }),
+          navigationOptions: {
+            tabBarLabel: 'Review Jobs',
+            tabBarIcon: ({ tintColor }) => (
+              <Icon name="favorite" size={30} color={tintColor} />
+            ),
+          }
         }
-      })
+      }, {
+          tabBarOptions: {
+            labelStyle: { fontSize: 12 }
+          }
+        })
     }, {
-      navigationOptions: {
-        tabBarVisible: false
-      },
-      lazyLoad: true //not preload Components in navi
-    });
+        navigationOptions: {
+          tabBarVisible: false
+        },
+        lazyLoad: true //not preload Components in navi
+      });
     return (
       <Provider store={store}>
         <MainNavigator />
@@ -51,7 +51,6 @@ export default class App extends React.Component {
     );
   }
 }
-// BUG: Random Crashes
 // BUG: Crashes on second API fetching
 /*
  FIXME: API fetching crash can be fixed by not making app state,

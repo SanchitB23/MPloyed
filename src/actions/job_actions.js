@@ -13,6 +13,8 @@ export const fetchJobs = (region, callbackForNav) => async (dispatch) => {
     // // NOTE: axios does the fetching thing,calls the url and gets response
     const { latitude, longitude } = region;
     const url = `${URL}&lat=${latitude}&long=${longitude}`;
+    console.log(url);
+
     const data = await axios.get(url);
     dispatch({ type: FETCH_JOBS, payload: data });
     callbackForNav();
@@ -22,9 +24,9 @@ export const fetchJobs = (region, callbackForNav) => async (dispatch) => {
 };
 
 export const likeJob = (job) => ({
-    type: LIKE_JOB,
-    payload: job
-  });
+  type: LIKE_JOB,
+  payload: job
+});
 
 
 export const clearLikedJobs = () => ({ type: CLEAR_LIKED_JOB });

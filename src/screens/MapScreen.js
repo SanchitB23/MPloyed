@@ -6,17 +6,20 @@ import { Button, Icon } from 'react-native-elements';
 import * as actions from '../actions';
 
 class MapScreen extends Component {
-  static navigationOptions={
+  static navigationOptions = {
     title: 'Map',
     tabBarIcon: ({ tintColor }) => (
       <Icon name="my-location" size={30} color={tintColor} />
     )
   }
-  state={
+  state = {
     mapLoaded: false,
     region: {
-      longitude: 77.216721,
-      latitude: 28.644800,
+      // longitude: 77.216721,
+      // latitude: 28.644800,
+      //Below for Palo Alto, Above for Delhi
+      longitude: -122.160362,
+      latitude: 37.445099,
       longitudeDelta: 0.04,
       latitudeDelta: 0.09
     },
@@ -26,12 +29,12 @@ class MapScreen extends Component {
   componentDidMount() {
     this.setState({ mapLoaded: true });
   }
-  onRegionChangeComplete=(region) => {
+  onRegionChangeComplete = (region) => {
     this.setState({ region });
   }
-  onButtonPress=async() => {
+  onButtonPress = async () => {
     try {
-    this.setState({ loading: true });
+      this.setState({ loading: true });
       await this.props.fetchJobs(this.state.region, () => {
         this.props.navigation.navigate('deck', {
           lat: this.state.region.latitude,
@@ -66,7 +69,7 @@ class MapScreen extends Component {
             backgroundColor='#009688'
             title="Search This Area"
             loading={this.state.loading}
-            icon={{ name: 'search' }}
+            icon={!this.state.loading ? { name: 'search' } : {}}
             onPress={this.onButtonPress} //// NOTE: no need to bind if using arrow func
           />
         </View>
