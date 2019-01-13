@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import { Facebook } from 'expo';
-
+import {AppId} from '../constants/Keys';
 import {
   FACEBOOK_LOGIN_SUCCESS,
   FACEBOOK_LOGIN_FAIL
@@ -24,7 +24,7 @@ export const facebookLogin = () => async dispatch => {
 
 
 const doFacebookLogin = async dispatch => {
-  const { type, token } = await Facebook.logInWithReadPermissionsAsync('205415063460000', {
+  const { type, token } = await Facebook.logInWithReadPermissionsAsync(AppId, {
     permissions: ['public_profile']
   });
 
